@@ -1,0 +1,126 @@
+{% extends 'layout.html'%} {% block title %} Inicio {% endblock %} {% block
+  content %}
+  
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="text-container mt-5">
+            <h1>UNI-MAPS</h1>
+            <p class="p-large p-heading">
+              Este mapa ayuda a los estudiantes de nuevo ingreso a orientarse
+              correctamente con las ubicaciones de los edificio e instalaciones de
+              la Universidad Nacional de Ingenieria...
+            </p>
+            <h1>NOVEDADES</h1>
+            <li></li>
+            <li>Prueba el novedoso chat global</li>
+            <li>Completa tu perfil con informacion personal para que los demas te vean.</li>
+            <li>Prueba la version web y la version para tu celular.</li>
+            <li>Deja un comentario sobre los lugares que encuentres en el mapa.</li>
+            <li>Explora la UNI con esta aplicacion.</li>
+            <li></li>
+
+            <h1>ACTUALIZACIONES SI ESTE PROYECTO RECIBE APOYO</h1>
+            <li></li>
+            <li>Pronto agregaremos al IES en el mapa.</li>
+            <li>Pronto agregaremos imagenes en 360 grados.</li>
+            <li>Pronto agregaremos mas puntos de interes del UNI-RUSB.</li>
+            <li>Pronto abriremos las puertas al publico.</li>
+            <li>Pronto incluiremos todos los kioskos de este recinto universitario.</li>
+            <li>Pronto agregaremos los menus de esos kioskos.</li>
+            <li></li>
+            <!-- <a class="btn-solid-lg" href="#your-link"><i class="fab fa-apple"></i>DOWNLOAD</a> -->
+            <a
+              class="btn-solid-lg"
+              href="{{ url_for('static', filename='images/UNIMAPS.apk')}}"
+              ><i class="fab fa-google-play"></i>Descargar</a
+            >
+          </div>
+          <!-- end of text-container -->
+        </div>
+        <!-- end of col -->
+      </div>
+      <!-- end of row -->
+      <!-- imagen -->
+  
+      <!-- <div class="row">
+                  <div class="col-lg-12">
+                      <div class="image-container">
+                          <img class="img-fluid" src="images/header-iphone.png" alt="alternative">
+                      </div> 
+                  </div> 
+              </div> -->
+    </div>
+    <!-- end of container -->
+    <div class="deco-white-circle-1">
+      <img
+        src="{{ url_for('static', filename='images/decorative-white-circle.svg')}}"
+        alt="alternative"
+      />
+    </div>
+    <!-- end of deco-white-circle-1 -->
+    <div class="deco-white-circle-2">
+      <img
+        src="{{ url_for('static', filename='images/decorative-white-circle.svg')}}"
+        alt="alternative"
+      />
+    </div>
+    <!-- end of deco-white-circle-2 -->
+    <div class="deco-blue-circle">
+      <img
+        src="{{ url_for('static', filename='images/decorative-blue-circle.svg')}}"
+        alt="alternative"
+      />
+    </div>
+    <!-- end of deco-blue-circle -->
+    <div class="deco-yellow-circle">
+      <img
+        src="{{ url_for('static', filename='images/decorative-yellow-circle.svg')}}"
+        alt="alternative"
+      />
+    </div>
+    <!-- end of deco-yellow-circle -->
+    <div class="deco-green-diamond">
+      <img
+        src="{{ url_for('static', filename='images/decorative-green-diamond.svg')}}"
+        alt="alternative"
+      />
+    </div>
+    <!-- end of deco-yellow-circle -->
+  </header>
+  <!-- end of header -->
+  <!-- end of header -->
+  
+  <div class="container-fluid">
+    <!-- <div class="dropdown buttoninmap">
+      <a
+        class="btn btnmap dropdown-toggle"
+        href="#"
+        role="button"
+        data-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Filtrar
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" id="todos">Todos</a>
+        <a class="dropdown-item" id="edificio">Edificios</a>
+        <a class="dropdown-item" id="cafetines">Cafetines</a>
+        <a class="dropdown-item" id="administrativo">Administrativo</a>
+      </div>
+    </div> -->
+    <!-- <input class="buttoninmap" id="hide-markers" type="button" value="Ocultar marcador" /> -->
+    <div id="map" style="height: 800px"></div>
+  </div>
+  
+  <!-- script maps -->
+  <script src="{{ url_for('static', filename='js/maps.js')}}"></script>
+  <!-- AIzaSyCQpZ-cabD1OMl-i9i1HUghROp7c0pP82c&map_ids=663481e2c353fdbc -->
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5J5DkU8qc2YKHEOBGARcs8DqMSpJHplA&callback=initMap&v=weekly"
+    defer
+  ></script>
+  
+  {% endblock %}

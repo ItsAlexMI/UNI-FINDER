@@ -1,0 +1,114 @@
+{% extends 'layout.html'%} {% block title %} Chat {% endblock %} {% block
+    content %}
+    
+    <link
+      href="{{ url_for('static', filename='css/chat.css') }}"
+      rel="stylesheet"
+    />
+    
+    <div class="container" style="margin-top: 6%; margin-bottom: 6%">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- DIRECT CHAT PRIMARY -->
+          <div
+            class="card card-danger card-outline direct-chat direct-chat-red shadow-sm"
+          >
+            <div class="card-header">
+              <h3 class="card-title">Chat en vivo</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <!-- Conversations are loaded here -->
+              <div class="direct-chat-messages" style="height: 550px"></div>
+              <!--/.direct-chat-messages-->
+              <!-- Contacts are loaded here -->
+              <!-- /.direct-chat-pane -->
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+              <form action="" method="" id="formu">
+                <div class="input-group">
+                  <input
+                    type="text"
+                    name="message"
+                    placeholder="Escriba el mensaje..."
+                    class="form-control"
+                    autocomplete="off"
+                    id="mensaje"
+                  />
+                  <span class="input-group-append">
+                    <button id="btnSend" type="submit" class="btn btn-danger">
+                      Enviar
+                    </button>
+                  </span>
+                </div>
+              </form>
+            </div>
+            <!-- /.card-footer-->
+          </div>
+          <!--/.direct-chat -->
+        </div>
+        <!--/.direct-chat -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- cdn socket io -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
+      integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA=="
+      crossorigin="anonymous"
+    ></script>
+    <!-- chat js -->
+    <script src="{{ url_for('static', filename='js/chat.js')}}"></script>
+    
+    <script>
+      var socket = io();
+    
+      //selecionamos el formulario
+      document.querySelector("#formu").onsubmit = () => {
+        //capturamos el mensaje del usuario
+        mensaje = document.querySelector("#mensaje").value;
+        if (mensaje == "") return false;
+        document.querySelector("#mensaje").value = "";
+        //fecha
+        var hoy = new Date();
+        time = new Date().toLocaleDateString("es-ES", {
+          weekday: "long",
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        });
+        hora = hoy.getHours() + ":" + hoy.getMinutes();
+        var fecha = time + " - " + hora;
+        //emetimos un evento, con el mensaje del usuario
+        socket.emit("saludar", mensaje, "{{username}}", fecha, (message) => {
+          var hoy = new Date();
+          fecha = new Date().toLocaleDateString("es-ES", {
+            weekday: "long",
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          });
+          hora = hoy.getHours() + ":" + hoy.getMinutes();
+          var time = fecha + " - " + hora;
+          console.log("time: ", time);
+          console.log("message: ", message);
+          chat.printMessageRight("{{username}}", time, message);
+          document.querySelector(".direct-chat-messages").scrollBy(0, 100);
+        });
+        return false;
+      };
+    
+      //recibimos el evento del servidor con la respuesta
+      socket.on("general", (data) => {
+        time = data.fecha;
+        usuario = data.username;
+        message = data.message;
+    
+        //enviamos los datos del mensaje, a la funcion del mensaje xd
+        chat.printMessageLeft(data.username, time, data.message);
+        document.querySelector(".direct-chat-messages").scrollBy(0, 100);
+      });
+    </script>
+    
+    {% endblock %}

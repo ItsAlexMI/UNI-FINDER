@@ -1,0 +1,108 @@
+{% extends 'layout.html'%} {% block title %} Inicio {% endblock %} {% block
+    content %}
+    
+    <div class="cards-2">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <h3 class="">¿Como surgió la idea?</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <img
+              class="img-fluid"
+              src="{{ url_for('static', filename='images/logo-removebg-previewx3-removebg-preview-removebg-preview.png')}}"
+              alt=""
+            />
+          </div>
+          <div class="col-lg-6">
+            <p class="mt-1">
+              Como estudiante de nuevo ingreso en los primeros días de clases me
+              perdí cuando buscaba mi aula de estudio cuando iba a los laboratorios,
+              algún lugar administrativo y me percaté que no fui el único(a) con
+              estos problemas Ante esto surge la necesidad de ubicar los salones,
+              edificios, incluso los horarios de atención en caja, registro
+              académico, etc. y por esto creamos UNI-MAPS un mapa donde los
+              estudiantes de nuevos ingresos se pueden ubicar de una forma sencilla
+              y rápida.
+            </p>
+          </div>
+          
+        </div>
+        
+      </div>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/MFIi7HW2kPw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    
+    <div class="counter">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <!-- Counter -->
+            <div id="counter">
+              <h3 class="mb-3">Tecnologías</h3>
+              <div class="cell">
+                <i
+                  class="fa-brands fa-python"
+                  style="font-size: 3rem; color: #386e9d"
+                ></i>
+    
+                <p class="counter-info">Python</p>
+              </div>
+              <div class="cell">
+                <i
+                  class="fa-solid fa-pepper-hot"
+                  style="font-size: 3rem; color: #386e9d"
+                ></i>
+    
+                <p class="counter-info">Flask</p>
+              </div>
+              <div class="cell">
+                <i
+                  class="fa-brands fa-js"
+                  style="font-size: 3rem; color: #386e9d"
+                ></i>
+    
+                <p class="counter-info">Javascript</p>
+              </div>
+    
+              <div class="cell">
+                <i
+                  class="fa-solid fa-database"
+                  style="font-size: 3rem; color: #386e9d"
+                ></i>
+    
+                <p class="counter-info">Sqlite</p>
+              </div>
+              <div class="cell">
+                <i
+                  class="fa-brands fa-bootstrap"
+                  style="font-size: 3rem; color: #386e9d"
+                ></i>
+    
+                <p class="counter-info">Bootstrap</p>
+              </div>
+    
+              <p>
+                La aplicación fue desarrollada con el lenguaje de programación
+                Python acompañada de un framework web llamado flask, el mapa es de
+                la api de Google Maps, fue implementado con javascript, como base de
+                datos se usó Sqlite, el sitio web es totalmente CRUD y la aplicación
+                tiene un pequeño chat la cual fue implementada con sockets y por el
+                lado del front-end ósea el diseño usado fue el framework de
+                bootstrap y la api de cloudinary para la gestión de imágenes de la
+                aplicación.
+              </p>
+            </div>
+            <!-- end of counter -->
+          </div>
+          <!-- end of col -->
+        </div>
+        <!-- end of row -->
+      </div>
+      <!-- end of container -->
+    </div>
+    <!-- end of counter -->
+    
+    {% endblock %}
